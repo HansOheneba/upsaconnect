@@ -1,0 +1,5 @@
+{
+    "require": {
+        "josegus/laravel-flash": "^1.4"
+    }
+}
