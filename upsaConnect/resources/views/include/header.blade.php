@@ -22,7 +22,7 @@
       <a href="#">
         <div class="flex justify-center items-center gap-2 font-semibold">
             @auth
-            {{ auth()->user()->name }}
+            {{ auth()->user()->first_name . ' ' . auth()->user()->last_name }}
             @endauth
             <div class="w-16 h-16 rounded-full overflow-hidden"><img class="scale-110" src="rss/8th.png"  alt=""></div>
           </div>
