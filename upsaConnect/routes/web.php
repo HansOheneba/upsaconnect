@@ -10,7 +10,7 @@ Route::get('/jobs', function () {
     return view('jobs');
 })->name('jobs')->middleware('auth');
 
-Route::get('/app', function () {
+Route::get('/', function () {
     return view('app');
 });
 
