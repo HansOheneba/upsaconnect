@@ -35,7 +35,7 @@ class AuthManager extends Controller
             return redirect()->intended(route('feed'));
         }
 
-        session()->flash('error', 'Login details are not valid');
+        session()->flash('error', 'Invalid login credentials');
 
         return redirect(route('login'));
     }
