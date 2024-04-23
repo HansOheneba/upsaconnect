@@ -1,52 +1,248 @@
-@extends('layoutNoInclude')
+@extends('layout')
 @section('title', 'Register')
 
 @section('content')
 
-<div>
+<div class="md:py-20 bg-gray-100">
+    <!-- Container -->
+    <div class="mx-auto">
+      <div class="flex justify-center px-6 py-12 ">
+        <!-- Row -->
+        <div class="w-full xl:w-3/4 lg:w-11/12 flex shadow-lg">
+          <!-- Col -->
+          <div
+            class="w-full h-auto bg-gray-400  hidden lg:block lg:w-5/12 bg-cover rounded-l-lg"
+            style="background-image: url('rss/bannerUPSA.jpg')"
+          ></div>
+          <!-- Col -->
+          <div
+            class="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none"
+          >
+            <h3 class="py-4 text-3xl font-black text-center text-gray-800">
+              Register as an alumni
+            </h3>
+            <form class="px-8 py-6 bg-white rounded">
+              <div class="mb-4 md:flex md:justify-start w-full">
+                <div class="mb-4 md:mr-2 md:mb-0 flex-grow">
+                  <label
+                    class="block mb-2 text-sm font-bold text-gray-700"
+                    for="firstName"
+                  >
+                    First Name
+                  </label>
+                  <input
+                    class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                    id="firstName"
+                    type="text"
+                    placeholder="First Name"
+                    required
+                  />
+                </div>
+                <div class="mb-4 md:mr-2 md:mb-0 md:ml-2 flex-grow">
+                  <label
+                    class="block mb-2 text-sm font-bold text-gray-700"
+                    for="otherNames"
+                  >
+                    Other Names
+                  </label>
+                  <input
+                    class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                    id="otherNames"
+                    type="text"
+                    placeholder="Other Names"
+                  />
+                </div>
+                <div class="md:ml-2 flex-grow">
+                  <label
+                    class="block mb-2 text-sm font-bold text-gray-700"
+                    for="lastName"
+                  >
+                    Last Name
+                  </label>
+                  <input
+                    class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                    id="lastName"
+                    type="text"
+                    placeholder="Last Name"
+                    required
+                  />
+                </div>
+              </div>
+              <style>
+                #maiden {
+                  display: none;
+                }
+              </style>
 
-        <section class="flex items-center justify-center min-h-lvh my-auto ">
-            <div>
-               <h1 class="text-9xl font-extrabold text-center py-8 text-upsaGrey">Get <br> Started</h1>
-               <p class="text-center text-upsaGreyText">Already got an account? <span class="text-white font-semibold"><a href="{{route('login')}}">Log In</a></span></p>
+              <div class="mb-4 md:flex w-full">
+                <div>
+                  <label
+                    for="gender"
+                    class="block mb-2 text-sm font-bold text-gray-700"
+                    >Gender</label
+                  >
+                  <select
+                    id="gender"
+                    class="border border-gray-300 text-gray-900 text-sm rounded shadow focus:ring-blue-500 focus:border-blue-500 block w-full p-2"
+                    onchange="toggleMaiden()"
+                  >
+                    <option value="" selected>Select your Gender</option>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                  </select>
+                </div>
 
-
-       <form action="{{route('register.post')}}" method="POST" class="max-w-sm mx-auto flex flex-col pb-10">
-        @csrf
-           <div class="mb-5 flex flex-col gap-2">
-             <label for="fname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-             <input type="text" name="first_name" class="bg-transparent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-transparent dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="First Name" required />
-             <input type="text" name="last_name" class="bg-transparent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-transparent dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Last Name" required />
-           </div>
-
-           <div class="mb-5">
-               <label for="studentID" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Student ID</label>
-               <input type="text" name="index_number" id="studentID" class="bg-transparent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-transparent dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="eg. 10110000" required />
-             </div>
-           <div class="mb-5">
-               <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email <span class="text-xs text-gray-300">(not student mail)</span></label>
-               <input type="email" name="email" id="email" class="bg-transparent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-transparent dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="eg. you@example.com" required />
-             </div>
-
-           <div class="mb-5 flex flex-col gap-2">
-             <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-             <input type="password" name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-transparent dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter your password" required />
-             <input type="password" name="password_confirmation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-transparent dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Confirm your password" required />
-           </div>
-
-
-           {{-- <div class="flex items-start mb-5">
-             <div class="flex items-center h-5">
-               <input id="remember" type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded bg-transparent focus:ring-3 focus:ring-blue-300 " required />
-             </div>
-             <label for="remember" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">By ticking this box, you are indicating that you have read and agree to the <span><a class="text-upsaYellow font-semibold" href="#">Terms of use</a></span> and <span class="text-upsaYellow font-semibold"><a href="#">Privacy Policy</a></span></label>
-           </div> --}}
-           <button type="submit" class="text-upsaBlue font-bold bg-white hover:bg-blue-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-3xl text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:focus:ring-blue-800">Create Account</button>
-         </form>
+                <div class="md:ml-2 flex-grow w-full" id="maiden">
+                  <label
+                    class="block mb-2 text-sm font-bold text-gray-700"
+                    for="maidenName"
+                  >
+                    Maiden Name of Female
+                  </label>
+                  <input
+                    class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                    id="maidenName"
+                    type="text"
+                    placeholder="Maiden Name"
+                    required
+                  />
+                </div>
+              </div>
 
 
 
-            </div>
-           </section>
+              <script>
+                function toggleMaiden() {
+                  var genderSelect = document.getElementById("gender");
+                  var maidenDiv = document.getElementById("maiden");
+                  maidenDiv.style.transition = "transition: display 0.5s ease;"
+
+                  if (genderSelect.value === "F") {
+                    maidenDiv.style.display = "block";
+                  } else {
+                    maidenDiv.style.display = "none";
+                  }
+                }
+              </script>
+
+
+
+              <div class="mb-4 md:flex md:justify-start w-full">
+                <div class="mb-4 md:mr-2 md:mb-0 flex-grow">
+                  <label
+                    class="block mb-2 text-sm font-bold text-gray-700"
+                    for="email"
+                  >
+                    Personal Email
+                    <!-- <span class="text-gray-400 text-xs"
+                      >(not student email)</span
+                    > -->
+                  </label>
+                  <input
+                    class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                    id="email"
+                    type="email"
+                    placeholder="eg. example@outlook.com"
+                    required
+                  />
+                </div>
+
+                <div class="md:ml-2 flex-grow">
+                  <label
+                    class="block mb-2 text-sm font-bold text-gray-700"
+                    for="lastName"
+                  >
+                    Phone Number
+                  </label>
+                  <input
+                    class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                    id="mobile"
+                    type="text"
+                    placeholder="eg. +233 123 456 789"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="mb-4 md:flex md:justify-start w-full">
+                <div class="mb-4 md:mr-2 md:mb-0 flex-grow">
+                  <label
+                    class="block mb-2 text-sm font-bold text-gray-700"
+                    for="email"
+                  >
+                    Year of Admission
+                  </label>
+                  <input
+                    class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                    id="admissionYear"
+                    type="number"
+                    placeholder="Enter year of admission"
+                    required
+                  />
+                </div>
+
+                <div class="md:ml-2 flex-grow">
+                  <label
+                    class="block mb-2 text-sm font-bold text-gray-700"
+                    for="lastName"
+                  >
+                    Year of Completion
+                  </label>
+                  <input
+                    class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                    id="completionYear"
+                    type="number"
+                    placeholder="Enter year of completion"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="mb-4 md:flex md:justify-start w-full">
+                <div class="mb-4 md:mr-2 md:mb-0 flex-grow">
+                  <label
+                    class="block mb-2 text-sm font-bold text-gray-700"
+                    for="email"
+                  >
+                    Course of Study
+                  </label>
+                  <input
+                    class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                    id="admissionYear"
+                    type="number"
+                    placeholder="Enter course of study"
+                    required
+                  />
+                </div>
+
+                <div class="md:ml-2 flex-grow">
+                  <label
+                    class="block mb-2 text-sm font-bold text-gray-700"
+                    for="lastName"
+                  >
+                    Occupation/Place of Work
+                  </label>
+                  <input
+                    class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                    id="completionYear"
+                    type="number"
+                    placeholder="What are you doing now"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="m-6 text-center">
+                <button
+                  class="w-fit px-6 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+                  type="submit"
+                >
+                  Register
+                </button>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 @endsection

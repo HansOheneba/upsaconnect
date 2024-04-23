@@ -49,7 +49,6 @@ class AlumniController extends Controller
         $data['occupation'] = $request->occupation;
         $data['is_verified'] = false;
 
-        dd($data);
         $alumni = Alumni::create($data);
 
 
