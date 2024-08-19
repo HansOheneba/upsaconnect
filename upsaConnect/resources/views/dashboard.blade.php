@@ -43,7 +43,7 @@
             <div class="flex flex-col gap-6">
                 <div class="px-4 py-6">
                     <div class="flex justify-center gap-2 px-6 py-5.5 lg:py-6.5">
-                        <a href="dashboard.html">
+                        <a href="/dashboard">
                           <img src="rss/upsa-logo-new-2.png" alt="Logo" />
                         </a>
                     </div>
@@ -53,7 +53,7 @@
 
 
                 <div>
-                    <a class="" href="dashboard.html">
+                    <a class="" href="/dashboard">
                         <button style="background-image: url('rss/home.svg'); background-position-x:4%;"
                             class="w-full bg-no-repeat bg-center bg-upsaBlue3  py-3 rounded-lg">
                             <p class="text-left text-lg pl-12  font-bold">
@@ -65,7 +65,7 @@
                     <br>
                     <hr>
                     <br>
-                    <a href="manageAlumni.html">
+                    <a href="/managealumni">
                         <button
                             class="w-full hover:bg-slate-100 bg-center py-3 rounded-lg">
                             <p class="text-left pl-12 font-semibold">
@@ -84,7 +84,7 @@
                     </a> -->
 
                     <br>
-                    <a href="manageJobs.html">
+                    <a href="/managejobs">
                         <button
                             class="w-full hover:bg-slate-100 bg-center py-3 rounded-lg">
                             <p class="text-left pl-12 font-semibold">

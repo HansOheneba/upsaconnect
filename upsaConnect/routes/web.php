@@ -46,6 +46,14 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
+Route::get('/managejobs', function () {
+    return view('managejobs');
+})->name('managejobs');
+
+Route::get('/managealumni', function () {
+    return view('managealumni');
+})->name('managealumni');
+
 
 
 Route::get('/login', [AuthManager::class, 'login'])->name('login');
