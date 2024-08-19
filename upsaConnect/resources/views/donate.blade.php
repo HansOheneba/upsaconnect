@@ -25,7 +25,7 @@
 
  <div class="p-20">
   <div>
-   <h1 id="DirectPayment" class="text-2xl font-bold text-center"> Give Direct</h1>
+   <h1 id="DirectPayment" class="text-2xl font-bold text-center"> Give Directly</h1>
   </div>
   <form id="paymentForm" class="max-w-sm mx-auto scroll-smooth">
     <div class="form-group">
